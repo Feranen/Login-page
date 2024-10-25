@@ -92,8 +92,6 @@ body {
     color: #fff;
 }
 
-.input-label {
-    position: absolute;
-    top: 20px;
-    left: 35px;
+.input-label:focus::placeholder {  
+    color: transparent;
 }
