@@ -11,7 +11,9 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(45deg, #007dfa, #7ad4e1)
+    background: linear-gradient(45deg, #007dfa, #7ad4e1);
+    overflow: hidden;
+    z-index: 0;
 }
 
 .wrapper {
@@ -20,8 +22,9 @@ body {
     position: relative;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     color: #fff;
-    height: 300px;
+    height: 430px;
     border-radius: 20px;
+    backdrop-filter: blur(20px);
 }
 
 .wrapper .input-box {
@@ -65,20 +68,6 @@ body {
     font-size: 14.5px;
     margin: -15px 0px 15px;
 }
-
-.remember-forgot label input {
-    accent-color: #fff;
-    margin-right: 3px;
-}
-.remember-forgot a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.remember-forgot a:hover {
-    text-decoration: underline;
-}
-
 .wrapper .btn {
     display: flex;
     margin-left: auto;
@@ -93,25 +82,21 @@ body {
     position: relative;
     overflow: hidden;
 }
-
-
-.input-label:focus::placeholder {  
-    color: transparent;
-    transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1);
-}
 .btn::after {
-    height: 70px;
+    height: 100px;
     background-color: rgba(0, 255, 255, 0.356);
     width: 10px;
     content: "";
     position: absolute;
     top: -5px;
-    left: -30px;
+    left: -40px;
     transition: transform 1s ease-in-out;
+    rotate: 30deg;
+    filter: blur(8px);
 }
 
 button:hover::after {
-    transform: translateX(110px);
+    transform: translateX(110px) translateY(-80px);
 
 }
 .reset {
@@ -127,4 +112,84 @@ button:hover::after {
 .input-label:not(:placeholder-shown) + .reset {
     left: calc(100% + 1px); /* Уменьшено расстояние */
     opacity: 0; /* Пропадает */
+}
+
+.person {
+    position: relative;
+    left: 33%;
+    top: 10px;
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.person::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: #7ad4e1;
+    border-radius: 50%;
+}
+.person::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    height: 65px;
+    background-color: #7ad4e1;
+    border-radius: 50%;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(100px, -50px); /* Random direction */
+    }
+    100% {
+        transform: translate(-50px, 100px); /* Random direction */
+    }
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+    animation: float 10s infinite alternate ease-in-out; /* Animation applied here */
+}
+
+.circle1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 10%;
+    animation-duration: 12s; /* Different timing */
+    animation-delay: 0s; /* Start immediately */
+}
+
+.circle2 {
+    width: 400px;
+    height: 400px;
+    bottom: 10%;
+    right: 10%;
+    animation-duration: 15s; /* Different timing */
+    animation-delay: 2s; /* Start after 2s */
+}
+
+.circle3 {
+    width: 200px;
+    height: 200px;
+    top: 60%;
+    left: 30%;
+    animation-duration: 8s; /* Different timing */
+    animation-delay: 1s; /* Start after 1s */
 }
