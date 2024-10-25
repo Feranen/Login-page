@@ -92,7 +92,17 @@ body {
     color: #fff;
 }
 
-.input-label:focus::placeholder {  
-    color: transparent;
-    transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+.reset {
+    position: absolute;
+    left: 30px;
+    top: 60%;
+    transform: translateY(-50%);
+    transition: left 2.4s ease, opacity 1s ease; /* Время анимации */
+    color: #ffffff;
+    pointer-events: none;
+}
+.input-label:focus + .reset,
+.input-label:not(:placeholder-shown) + .reset {
+    left: calc(100% + 1px); /* Уменьшено расстояние */
+    opacity: 0; /* Пропадает */
 }
